@@ -38,6 +38,8 @@ torrentProject.peers = function (torrent, callback) {
 }
 
 torrentProject.magnet = function (torrent, callback) {
+  if (!torrent) callback(new Error('empty torrent resource'))
+  
   var link = 'magnet:?xt=urn:btih:' + torrent.hash + '&'
 
   torrentProject.trackers(torrent, function (error, trackers) {
